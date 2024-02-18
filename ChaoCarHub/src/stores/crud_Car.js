@@ -138,6 +138,7 @@ export const UsecrudCarStore = defineStore("car", () => {
   const showAlertUpdate = ref(false);
   const fileImg = ref(null);
   const imageURL = ref(null);
+  const carStatus = ref('Available');
 
   const error = {
     carCode: ref(''),
@@ -146,6 +147,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     carSeat: ref(''),
     carBag: ref(''),
     carPrice: ref(''),
+    carStatus: ref('')
   };
 
   //previewImage โชว์รูป
@@ -195,6 +197,7 @@ export const UsecrudCarStore = defineStore("car", () => {
           carBag.value = carData.car_bag;
           carPrice.value = carData.car_rentprice;
           carImageURL.value = carData.car_img;
+          carStatus.value = carData.car_status;
 
           // console.log(fileImg.value)
           showAlertUpdate.value = true;
@@ -215,6 +218,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     validateCarSeat();
     validateCarBag();
     validateCarPrice();
+    validateCarStatus();
 
     if (result === true) {
       try {
@@ -225,6 +229,7 @@ export const UsecrudCarStore = defineStore("car", () => {
         formData.append('car_seat', carSeat.value);
         formData.append('car_bag', carBag.value);
         formData.append('car_rentprice', carPrice.value);
+        formData.append('car_status', carStatus.value);
         if (fileImg.value) {
           formData.append('myImageCar', fileImg.value);
         }
@@ -343,6 +348,17 @@ export const UsecrudCarStore = defineStore("car", () => {
     }
   }
 
+  const validateCarStatus = () => {
+    const carStatusLower = carStatus.value.toLowerCase();
+    if (carStatusLower === '') {
+        error.carStatus.value = 'กรุณากรอกสถานะรถ';
+    } else if (carStatusLower !== 'available' && carStatusLower !== 'maintain') {
+        error.carStatus.value = 'กรอกสถานะ Available or Maintain';
+    } else {
+        error.carStatus.value = '';
+    }
+};
+
   //addCar
   async function addCar() {
     validateCarCode();
@@ -352,6 +368,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     validateCarBag();
     validateCarPrice();
     validateFileType()
+    validateCarStatus()
 
     let formData = new FormData();
     formData.append('car_code', carCode.value);
@@ -361,6 +378,8 @@ export const UsecrudCarStore = defineStore("car", () => {
     formData.append('car_bag', carBag.value);
     formData.append('car_rentprice', carPrice.value);
     formData.append('myImageCar', fileImg.value);
+    formData.append('car_status', carStatus.value);
+
 
     try {
       const response = await axios.post('http://localhost:3000/car', formData, {
@@ -425,6 +444,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     carBag,
     carPrice,
     carImageURL,
+    carStatus,
     showAlertUpdate,
     confirmResult,
     fetchCarEdit,
@@ -438,6 +458,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     validateCarBag,
     validateCarPrice,
     validateFileType,
+    validateCarStatus,
     error,
     searchInput,
     toSearch,

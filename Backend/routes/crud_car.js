@@ -14,6 +14,7 @@ const carSchema = Joi.object({
   car_seat: Joi.number().min(2).max(20).required(), 
   car_bag: Joi.number().min(1).max(5).max(50000).required(), 
   car_rentprice: Joi.number().min(500).max(20000).required(),
+  car_status: Joi.string().required(), 
 })
 
 // SET STORAGE 
@@ -104,7 +105,7 @@ router.post("/car", upload.single("myImageCar"), async function (req, res, next)
     return res.status(400).json({ message: "Please upload a file" });
   }
 
-  const { car_code, car_brand, car_model, car_seat, car_bag, car_rentprice } = req.body
+  const { car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, car_status } = req.body
   const conn = await pool.getConnection();
   await conn.beginTransaction();
 
@@ -114,8 +115,8 @@ router.post("/car", upload.single("myImageCar"), async function (req, res, next)
     if (rows1.length === 0) {
       console.log("id is duplicate")
       const results = await conn.query(
-        "INSERT INTO car(`car_code`, `car_brand`, `car_model`, `car_seat`, `car_bag`, `car_rentprice`, `car_img`) VALUES(?, ?, ?, ?, ?, ?, ?)",
-        [car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, file.path.substr(6)]
+        "INSERT INTO car(`car_code`, `car_brand`, `car_model`, `car_seat`, `car_bag`, `car_rentprice`, `car_img`, `car_status`) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
+        [car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, file.path.substr(6), car_status]
       );
     }
     else {
@@ -154,10 +155,10 @@ router.put("/updatecar/:id", upload.single("myImageCar"), async function (req, r
   try {
     await carSchema.validateAsync(req.body, { abortEarly: false })
   } catch (err) {
-    return res.status(400).send(err)
+    return res.status(400).send(err) 
   }
   const file = req.file;
-  const { car_code, car_brand, car_model, car_seat, car_bag, car_rentprice } = req.body
+  const { car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, car_status } = req.body
   console.log(file)
   const conn = await pool.getConnection();
   await conn.beginTransaction();
@@ -165,13 +166,13 @@ router.put("/updatecar/:id", upload.single("myImageCar"), async function (req, r
   try {
     if (file != undefined){
       const results1 = await conn.query(
-        "UPDATE car SET car_code=?, car_brand=?, car_model=?, car_seat=?, car_bag=?, car_rentprice=?, car_img=? WHERE car_id=?",
-        [car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, file.path.substr(6), req.params.id]
+        "UPDATE car SET car_code=?, car_brand=?, car_model=?, car_seat=?, car_bag=?, car_rentprice=?, car_status=?, car_img=? WHERE car_id=?",
+        [car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, car_status, file.path.substr(6), req.params.id]
       );
     }else{
       const results2 = await conn.query(
-        "UPDATE car SET car_code=?, car_brand=?, car_model=?, car_seat=?, car_bag=?, car_rentprice=? WHERE car_id=?",
-        [car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, req.params.id]
+        "UPDATE car SET car_code=?, car_brand=?, car_model=?, car_seat=?, car_bag=?, car_rentprice=?, car_status=? WHERE car_id=?",
+        [car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, car_status, req.params.id]
       );
     }
    
