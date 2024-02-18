@@ -6,7 +6,7 @@ const CarStore = UsecrudCarStore();
 onMounted(CarStore.FetchCar);
 </script>
 
-<template>
+<template> 
   <div class="p-5 has-text-centered is-size-5">
     <div class="field has-addons" style="float: right">
       <div class="control">
@@ -38,6 +38,7 @@ onMounted(CarStore.FetchCar);
         <th>จำนวนที่นั่ง</th>
         <th>จำนวนใส่กระเป๋า</th>
         <th>ราคา</th>
+        <th>สถานะ</th>
       </tr>
       <tr v-for="item in CarStore.carvalue" :key="item.car_id">
         <td>{{ item.car_code }}</td>
@@ -55,6 +56,7 @@ onMounted(CarStore.FetchCar);
         <td>{{ item.car_seat }}</td>
         <td>{{ item.car_bag }}</td>
         <td>{{ item.car_rentprice }}</td>
+        <td>{{ item.car_status }}</td>
       </tr>
     </table>
   </div>

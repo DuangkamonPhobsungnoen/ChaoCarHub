@@ -71,7 +71,7 @@ onMounted(CarStore.FetchCar);
               </div>
             </div>
             <div class="columns">
-              <div class="column is-half">
+              <div class="column is-4">
                 <div class="field">
                   <label class="label">ยี่ห้อรถ</label>
                   <div class="control">
@@ -87,7 +87,7 @@ onMounted(CarStore.FetchCar);
                   </div>
                 </div>
               </div>
-              <div class="column is-half">
+              <div class="column is-4">
                 <div class="field">
                   <label class="label">รุ่นรถ</label>
                   <div class="control">
@@ -100,6 +100,22 @@ onMounted(CarStore.FetchCar);
                       :class="{'is-danger': CarStore.error.carModel}" @input="CarStore.validateCarModel()"
                     />
                     <span class="has-text-danger ertext ml-3">{{CarStore.error.carModel}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="field">
+                  <label class="label">สถานะ <b class="is-size-7">(Available or Maintain)</b></label>
+                  <div class="control">
+                    <input
+                      style="border-radius: 5px"
+                      v-model="CarStore.carStatus"
+                      class="input"
+                      type="text"
+                      placeholder="Available"
+                      :class="{'is-danger': CarStore.error.carStatus}" @input="CarStore.validateCarStatus()"
+                    />
+                    <span class="has-text-danger ertext ml-3">{{CarStore.error.carStatus}}</span>
                   </div>
                 </div>
               </div>
