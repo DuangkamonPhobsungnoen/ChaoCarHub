@@ -121,5 +121,5 @@ router.get("/myrent/car", isLoggedIn, async function (req, res, next) {
       res.json({message: "can't find rent Id"})
       return next(err);
     }
-    });
+  });
 exports.router = router;

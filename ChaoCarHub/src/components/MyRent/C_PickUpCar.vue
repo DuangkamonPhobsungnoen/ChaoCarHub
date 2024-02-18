@@ -74,15 +74,19 @@ defineProps({
           <p class="column is-size-6">
             ราคาสำหรับ {{ item.r_amountdays }} วัน {{ item.r_totalprice }} บาท
           </p>
+          <!-- cancel pick up -->
           <div class="column is-size-6 pl-6">
-            <p class="subtitle is-size-6 column_number">
-              <img
-                src="https://media.discordapp.net/attachments/1072181252964233328/1079444615184257074/success_1.png"
-                height="20"
-                width="20"
-              /><span class="pl-2"> ชำระเงินสำเร็จแล้ว</span>
-            </p>
+            <a class="subtitle is-size-6 column_number" @click="myrentStore.confirmCancel(item.car_brand, item.car_model, item.r_id)">
+              <a class="t-10">
+                <img src="https://media.discordapp.net/attachments/1072181252964233328/1079348472068702238/delete_1.png"
+                  height="25"
+                  width="25"/>
+              </a>
+              <span class="pl-2 has-text-grey"> ยกเลิกการรับรถ</span>
+            </a>
           </div>
+
+          <!-- confirm pick up -->
           <a class="column is-size-6">
             <button class="button btn has-text-white font" style="width: 100%" @click="myrentStore.btnPickup(item.r_id)">
               รับรถสำเร็จ

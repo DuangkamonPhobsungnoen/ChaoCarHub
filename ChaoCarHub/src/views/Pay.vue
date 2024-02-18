@@ -87,7 +87,7 @@ const paymentStore = UsepaymentStore();
           >
           <p class="is-size-7 has-text-danger has-text-centered">
             หมายเหตุ : หากยืนยันการชำระเงินสำเร็จแล้ว
-            คุณจะไม่สามารถยกเลิกการจองได้
+            คุณจะไม่สามารถดำเนินการขอเงินคืนได้
           </p>
         </div>
         <div class="column px-6">
