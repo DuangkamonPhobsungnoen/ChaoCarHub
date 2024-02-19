@@ -171,12 +171,19 @@ export const UserentCarStore = defineStore('rent', () => {
 
   async function reserveCar(item) {
     if (rentInfo.dayPickup === "" || rentInfo.timePickup === "" || rentInfo.dayReturn === "" || rentInfo.timeReturn === "") {
+      requiredInputCheck()
+      validateDateTime()
       const sweet = Swal.fire({
         icon: "warning",
-        title: 'กรุณากรอกวันและเวลาจองรถ',
+        title: 'กรุณากรอกวันเวลารับรถและคืนรถ',
         confirmButtonText: 'OK',
         confirmButtonColor: '#41BEB1'
       })
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
     }
     else {
       router.push({ name: 'detailcar', params: { id: parseInt(item) } })
