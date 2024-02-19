@@ -74,9 +74,6 @@ const check = true;
                 <strong>Sign up</strong>
               </router-link>
             </a>
-            <a class="navbar-item" @click="registerStore.logout()">
-                <strong>Log out</strong>
-            </a>
           </div>
           
         </div>
