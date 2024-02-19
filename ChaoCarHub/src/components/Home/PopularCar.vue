@@ -30,14 +30,14 @@ import CardCar from '../CardCar.vue';
             </figure>
           </div>
           <div class="card-image  pt-6">
-            <b class="is-size-3">Honda</b>
+            <b class="is-size-3">Honda </b>
             <br /><br />
             <figure class="image is-3by3">
               <img src="https://media.discordapp.net/attachments/1072181252964233328/1077265050923962449/1-honda-city-can-tho-auto-removebg-preview.png?width=765&height=510" alt="Placeholder image "/>
             </figure>
           </div>
         </div>
-        <!-- <h1> {{  CarStore.toyotacar}}</h1> -->
+       
         <div class="column">
           <div class="is-multiline is-variable columns is-1">
               <CardCar v-for="item in CarStore.toyotacar?.slice(0, 3)" :item="item" id="card_product " class="column is-one-third"></CardCar>     

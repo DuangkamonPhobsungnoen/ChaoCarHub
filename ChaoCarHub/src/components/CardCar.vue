@@ -8,16 +8,16 @@ defineProps({
 </script>
 
 <template>
-  <div id="card_product " class="column is-one-third">
+  <div id="card_product " class="column is-one-third" v-if="(item.car_status).toLowerCase() == 'available'">
     <div class="card has-text-centered is-border-radius">
-      <div class="card-image px-5 pt-2">
+      <div class="card-image px-5 pt-2" >
         <figure class="image is-4by3">
           <img :src="`http://localhost:3000/${item.car_img}`" alt="" />
         </figure>
       </div>
       <div class="card-content">
         <p class="title is-size-6 limit_text">
-          {{ item.car_brand }} {{ item.car_model }}
+          {{ item.car_brand }} {{ item.car_model }} 
         </p>
         <div class="subtitle is-size-7 ">
           <img src="https://media.discordapp.net/attachments/1072181252964233328/1077073362708332614/image_18.png " alt=" "/>
