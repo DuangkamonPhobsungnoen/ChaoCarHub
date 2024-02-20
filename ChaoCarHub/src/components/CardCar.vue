@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <div id="card_product " class="column is-one-third" v-if="(item.car_status).toLowerCase() == 'available'">
+  <div id="card_product " class="column is-one-third" >
     <div class="card has-text-centered is-border-radius">
       <div class="card-image px-5 pt-2" >
         <figure class="image is-4by3">

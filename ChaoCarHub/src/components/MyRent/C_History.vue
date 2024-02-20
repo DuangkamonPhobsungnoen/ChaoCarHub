@@ -51,8 +51,11 @@ defineProps({
             </div>
           </div>
           <div class="column is-4">
-            <p class="is-size-4" style="background-color: #8ee1bb">
+            <p v-if="item.r_status === 'history'" class="is-size-4" style="background-color: #8ee1bb">
               <b>คืนรถสำเร็จ</b>
+            </p>
+            <p v-else-if="item.r_status === 'cancel'" class="is-size-4" style="background-color: #A8A8A880">
+              <b>ถูกยกเลิก</b>
             </p>
             <div class="column p-5 is-size-6">
               <div class="column has-text-left">
