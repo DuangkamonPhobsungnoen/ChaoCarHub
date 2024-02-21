@@ -25,7 +25,7 @@ export const UsemyrentStore = defineStore('myrent', () => {
     checkoutCar.value = mycar.value.filter((car) => car.r_status === 'checkout')
     pickupCar.value = mycar.value.filter((car) => car.r_status === 'pickup')
     returnCar.value = mycar.value.filter((car) => car.r_status === 'return')
-    historyCar.value = mycar.value.filter((car) => car.r_status === 'history')
+    historyCar.value = mycar.value.filter((car) => car.r_status === 'history' || car.r_status === 'cancel')
     //get payed Id
     const fetchingData1 = await axios.get("myrent/pay")
     hadPay.value = fetchingData1.data
@@ -41,6 +41,10 @@ export const UsemyrentStore = defineStore('myrent', () => {
 
   const showAlert = ref(false);
   const alertMessage = ref('');
+  const redText = ref('');
+  const alertMessage1 = ref('');
+  const alertMessage2 = ref('');
+  const alertMessage3 = ref('');
   const confirmResult = ref(null);
   const rentId = ref(0)
 
@@ -51,25 +55,14 @@ export const UsemyrentStore = defineStore('myrent', () => {
     console.log("rent id ", rentId.value)
   };
 
-  async function confirmCancel(result) {
-    confirmResult.value = result;
-    showAlert.value = false;
-    if (result) {
-      const fetchingData1 = await axios.post(`/myrent/return/${rentId.value}`)
-      const response = await axios.put(`/admin/return/${returnCarId.value}`);
-
-      // ถ้ากดตกลงก็จะลบ card
-      const fetchingData2 = await axios.post("/myrent/remove", {
-        rentId: rentId.value
-      })
-      checkoutCar.value = checkoutCar.value.filter((car) => car.r_id !== rentId.value)
-      const sweet = Swal.fire({
-        icon: "success",
-        title: 'ยกเลิกการจองรถสำเร็จ',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#41BEB1'
-      })
-    }
+  async function showCancelPickupConfirmation(carBrand, carModel, rId) {
+    showAlert.value = true;
+    alertMessage1.value = `ท่านจะ`;
+    redText.value = `ไม่สามารถรับเงินคืนได้`
+    alertMessage2.value = `หลังจากยกเลิก`
+    alertMessage3.value = `ต้องการดำเนินการยกเลิกการรับรถ ${carBrand} ${carModel} หรือไม่?`
+    rentId.value = rId
+    console.log("rent id (cancel pickup) ", rentId.value)
   };
 
   async function confirm(result) {
@@ -110,6 +103,27 @@ export const UsemyrentStore = defineStore('myrent', () => {
    
   }
 
+  async function btnCancelPickup(rId) {
+    console.log("id ", rId)
+    confirmResult.value = true;
+    showAlert.value = false;
+    try{
+      const fetchingData = await axios.put(`/myrent/cancelPickup/${rId}`)
+      pickupCar.value = pickupCar.value.filter((car) => car.r_id !== rId)
+
+      historyCar.value = mycar.value.filter((car) => car.r_status === 'cancel' || car.r_id === rId)
+      console.log("add", returnCar.value)
+      const sweet = Swal.fire({
+        icon: "success",
+        title: 'ยืนยันการยกเลิกรับรถสำเร็จ',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#41BEB1'
+      })
+    }catch(error){
+      console.log(error)
+    }
+   
+  }
 
   async function btnReturn(rId) {
     console.log("id ", rId)
@@ -187,7 +201,6 @@ export const UsemyrentStore = defineStore('myrent', () => {
     alertMessage,
     confirmResult,
     showConfirmation,
-    confirmCancel,
     confirm,
     hadPay,
     btnPickup,
@@ -197,6 +210,12 @@ export const UsemyrentStore = defineStore('myrent', () => {
     FetchReturncar,
     allReturncar,
     confirmVerified,
-    showAlertVerified
+    showAlertVerified, 
+    btnCancelPickup,
+    showCancelPickupConfirmation,
+    redText,
+    alertMessage1,
+    alertMessage2,
+    alertMessage3,
   }
 })

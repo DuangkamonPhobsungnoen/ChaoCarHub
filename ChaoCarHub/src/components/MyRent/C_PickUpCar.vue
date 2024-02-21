@@ -1,9 +1,9 @@
 <script setup>
-import { UsemyrentStore } from "@/stores/myRent"
-const myrentStore  = UsemyrentStore()
-defineProps({
-  item: Object,
-});
+  import { UsemyrentStore } from "@/stores/myRent"
+  const myrentStore  = UsemyrentStore()
+  defineProps({
+    item: Object,
+  });
 </script>
 
 <template>
@@ -76,7 +76,7 @@ defineProps({
           </p>
           <!-- cancel pick up -->
           <div class="column is-size-6 pl-6">
-            <a class="subtitle is-size-6 column_number" @click="myrentStore.confirmCancel(item.car_brand, item.car_model, item.r_id)">
+            <a class="subtitle is-size-6 column_number" @click="myrentStore.showCancelPickupConfirmation(item.car_brand, item.car_model, item.r_id)">
               <a class="t-10">
                 <img src="https://media.discordapp.net/attachments/1072181252964233328/1079348472068702238/delete_1.png"
                   height="25"
@@ -84,6 +84,24 @@ defineProps({
               </a>
               <span class="pl-2 has-text-grey"> ยกเลิกการรับรถ</span>
             </a>
+            <div v-if="myrentStore.showAlert">
+              <div class="modal">
+                <div class="modal-content">
+                  <div class="is-size-5">
+                    <span>{{ myrentStore.alertMessage1 }}</span>
+                    <span class="has-text-danger has-text-weight-bold">{{ myrentStore.redText }}</span>
+                    <span>{{ myrentStore.alertMessage2 }}</span>
+                  </div>
+                  <p class="is-size-5">{{ myrentStore.alertMessage3 }}</p><br>
+                  <footer class="mb-2">โปรดใส่ข้อความ “ยกเลิกการรับรถ” หากท่านต้องการยืนยันการดำเนินการ</footer>
+                  <input type="text" class="input is-size-5 mb-5 px-5" style="width: 80%;" placeholder="ยกเลิกการรับรถ" v-model="inputValue">
+                  <div class="buttons">
+                    <button class="button is-size-6 has-background-success has-text-white" @click="myrentStore.btnCancelPickup(item.r_id)" :disabled="!isInputValueValid">Ok</button>
+                    <button class="button is-size-6 has-background-danger has-text-white" @click="myrentStore.confirm(false)">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- confirm pick up -->
@@ -96,3 +114,19 @@ defineProps({
       </div>
     </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        inputValue: '',
+      };
+    },
+    computed: {
+      isInputValueValid() {
+        // console.log("inputValue : ", this.inputValue);
+        return this.inputValue === 'ยกเลิกการรับรถ';
+      },
+    },
+  };
+</script>

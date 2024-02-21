@@ -8,6 +8,7 @@ import Table_UpdateDeleteCar from "../components/Admin/Table_UpdateDeleteCar.vue
 import Table_Pay from "../components/Admin/Table_Pay.vue";
 import Table_ReturnCar from "../components/Admin/Table_ReturnCar.vue";
 import Table_CusVue from "../components/Admin/Table_Cus.vue";
+import Table_LateReturnCar from "../components/Admin/Table_LateReturnCar.vue";
 
 //value from status bar
 const receivedValue = ref("home");
@@ -23,4 +24,5 @@ provide("sharedValue", receivedValue);
     <Table_UpdateDeleteCar v-if="receivedValue == 'updatedelete'"></Table_UpdateDeleteCar>
     <Table_Pay v-if="receivedValue == 'payment'"></Table_Pay>
     <Table_ReturnCar v-if="receivedValue == 'returncar'"></Table_ReturnCar>
+    <Table_LateReturnCar v-if="receivedValue == 'checkLateCar'"></Table_LateReturnCar>
 </template> 

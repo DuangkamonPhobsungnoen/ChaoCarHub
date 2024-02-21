@@ -50,6 +50,19 @@ router.get("/myrent/car", isLoggedIn, async function (req, res, next) {
   
   });
 
+  //button cancel pickup car
+  router.put("/myrent/cancelPickup/:id",isLoggedIn, async function (req, res, next) {
+    try {
+      const [rows, fields] = await pool.query('UPDATE rental SET r_status=? WHERE r_id=?', 
+      ["cancel", req.params.id])
+      console.log("Router for cancel is here")
+      return res.json(rows)
+    } catch (err) {
+      return res.status(500).json(err)
+    }
+  
+  });
+
   //button return car
   router.post("/myrent/return/:id",isLoggedIn, async function (req, res, next) {
     try {
@@ -122,4 +135,5 @@ router.get("/myrent/car", isLoggedIn, async function (req, res, next) {
       return next(err);
     }
   });
+
 exports.router = router;
