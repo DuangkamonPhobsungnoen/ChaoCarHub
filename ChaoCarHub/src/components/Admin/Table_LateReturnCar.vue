@@ -5,38 +5,6 @@ const myrentStore  = UsemyrentStore()
 onMounted(myrentStore.FetchReturncar);
 </script>
 
-<script>
-export default {
-  data() {
-    return {
-      lastDate: '2024-02-15', // Replace with your own date
-      currentDate: ''
-    };
-  },
-  mounted() {
-    this.currentDate = this.getCurrentDate();
-  },
-  computed: {
-    daysSinceLastDate() {
-      const currentDate = new Date();
-      const previousDate = new Date(this.lastDate);
-      const timeDifference = currentDate.getTime() - previousDate.getTime();
-      const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-      return daysDifference;
-    }
-  },
-  methods: {
-    getCurrentDate() {
-      const current = new Date();
-      const month = (current.getMonth() + 1).toString().padStart(2, '0');
-      const date = `${current.getFullYear()}-${month}-${current.getDate()}`;
-      console.log('Current Date: ', date);
-      return date;
-    }
-  }
-};
-</script>
-
 <template>
      <div class="p-5 is-size-5 has-text-centered" >
       <div >
@@ -44,7 +12,6 @@ export default {
       <b class="has-background-danger-dark has-text-white"
         >รายละเอียดการคืนรถล่าช้า</b
       ><br />
-      <button @click="currentDate()">test</button>
       <b
         >ขณะนี้มีลูกค้าที่เลยกำหนดการคืนรถทั้งหมด
         {{ myrentStore.allReturncar.length }}
@@ -94,7 +61,12 @@ export default {
         <td> {{ item.car_brand}} {{ item.car_model }}</td>
         <td> {{ item.r_place_return }}</td>
         <td> {{ item.r_day_return}} {{ item.r_time_return}} </td>
-        <td>{{daysSinceLastDate}} วัน</td>
+        <td>
+          <span v-if="currentDate && item.r_day_return">
+            {{ calculateDaysDifference(currentDate, item.r_day_return) }} วัน
+          </span>
+        </td>
+
 
         <td class="has-text-danger">
           <div class="control">
@@ -115,3 +87,37 @@ export default {
       </div>
     </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      currentDate: ''
+    };
+  },
+  mounted() {
+    this.currentDate = this.getCurrentDate();
+  },
+  computed: {
+    myrentStore() {
+      return this.$store.state.myRent;
+    }
+  },
+  methods: {
+    getCurrentDate() {
+      const current = new Date();
+      const month = (current.getMonth() + 1).toString().padStart(2, '0');
+      const date = `${current.getFullYear()}-${month}-${current.getDate()}`;
+      console.log('Current Date: ', date);
+      return date;
+    },
+    calculateDaysDifference(currentDate, returnDate) {
+      const current = new Date(currentDate);
+      const previous = new Date(returnDate);
+      const timeDifference = current.getTime() - previous.getTime();
+      const daysDifference = Math.round(timeDifference / (1000 * 60 * 60 * 24))+1;
+      return daysDifference;
+    }
+  }
+};
+</script>
