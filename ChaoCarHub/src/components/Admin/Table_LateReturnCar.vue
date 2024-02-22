@@ -10,10 +10,8 @@ onMounted(myrentStore.FetchReturncar);
       <div >
         <h1 class="is-size-4 p-5 has-text-centered">
       <b class="has-background-danger-dark has-text-white"
-        >รายละเอียดการคืนรถล่าช้า</b
-      ><br />
-      <b
-        >ขณะนี้มีลูกค้าที่เลยกำหนดการคืนรถทั้งหมด
+        >รายละเอียดการคืนรถล่าช้า</b><br />
+      <b>ขณะนี้มีลูกค้าที่เลยกำหนดและยังไม่คืนรถทั้งหมด
         {{ myrentStore.allReturncar.length }}
         <b class="has-text-warning is-size-2">  </b>
         คน</b
@@ -43,48 +41,51 @@ onMounted(myrentStore.FetchReturncar);
                 </div>
             </div>
           </div>
-    <table style="width: 100%" >
-      <tr style="background-color: hsl(348, 86%, 90%);" class="sticky">
-        <th>รหัสผู้ใช้</th>
-        <th>ชื่อลูกค้า</th>
-        <th>หมายเลขรถ</th>
-        <th>ชื่อรถ</th>
-        <th>สถานที่คืนรถ</th>
-        <th>วันและเวลาคืนรถ</th>
-        <th>จำนวนวันที่เกินกำหนด</th>
-        <th>ตรวจสอบการคืนรถ</th>
-      </tr>
-      <tr  v-for="item in myrentStore.allReturncar" :key="item.re_id">
-        <td> {{ item.u_id }}</td>
-        <td> {{ item.u_fname }} {{ item.u_lname }}</td>
-        <td> {{ item.car_code }}</td>
-        <td> {{ item.car_brand}} {{ item.car_model }}</td>
-        <td> {{ item.r_place_return }}</td>
-        <td> {{ item.r_day_return}} {{ item.r_time_return}} </td>
-        <td>
-          <span v-if="currentDate && item.r_day_return">
-            {{ calculateDaysDifference(currentDate, item.r_day_return) }} วัน
-          </span>
-        </td>
+    <!-- <div v-if="(myrentStore.hadReturn.includes(item.r_id) && isReturn)"> -->
+      <table style="width: 100%" >
+        <tr style="background-color: hsl(348, 86%, 90%);" class="sticky">
+          <th>รหัสผู้ใช้</th>
+          <th>ชื่อลูกค้า</th>
+          <th>หมายเลขรถ</th>
+          <th>ชื่อรถ</th>
+          <th>สถานที่คืนรถ</th>
+          <th>วันและเวลาคืนรถ</th>
+          <th>จำนวนวันที่เกินกำหนด</th>
+          <th>ตรวจสอบการคืนรถ</th>
+        </tr>
+        <tr  v-for="item in myrentStore.allReturncar" :key="item.re_id">
+          <td> {{ item.u_id }}</td>
+          <td> {{ item.u_fname }} {{ item.u_lname }}</td>
+          <td> {{ item.car_code }}</td>
+          <td> {{ item.car_brand}} {{ item.car_model }}</td>
+          <td> {{ item.r_place_return }}</td>
+          <td> {{ item.r_day_return}} {{ item.r_time_return}} </td>
+          <td>
+            <span v-if="currentDate && item.r_day_return">
+              {{ calculateDaysDifference(currentDate, item.r_day_return) }} วัน
+            </span>
+          </td>
 
 
-        <td class="has-text-danger">
-          <div class="control">
-            <div class="level-item">
-              <button class="button is-link" @click="myrentStore.showConfirmReturnCar(item.car_brand, item.car_model, item.u_fname, item.re_id)">
-                <span>Verified</span>
-                <span class="icon is-small">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/871/871896.png"
-                  />
-                </span>
-              </button>
+          <td class="has-text-danger">
+            <div class="control">
+              <div class="level-item">
+                <button class="button is-link" @click="myrentStore.showConfirmReturnCar(item.car_brand, item.car_model, item.u_fname, item.re_id)">
+                  <span>Verified</span>
+                  <span class="icon is-small">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/871/871896.png"
+                    />
+                  </span>
+                </button>
+              </div>
             </div>
-          </div>
-        </td>   
-      </tr>
-    </table>
-      </div>
+          </td>   
+        </tr>
+      </table>
+    <!-- </div>
+    <div v-else>ขณะนี้ยังไม่มีรถที่เกินกำหนดการคืน</div> -->
+    </div>
     </div>
 </template>
 
@@ -115,7 +116,7 @@ export default {
       const current = new Date(currentDate);
       const previous = new Date(returnDate);
       const timeDifference = current.getTime() - previous.getTime();
-      const daysDifference = Math.round(timeDifference / (1000 * 60 * 60 * 24))+1;
+      const daysDifference = Math.celi(timeDifference / (1000 * 60 * 60 * 24));
       return daysDifference;
     }
   }

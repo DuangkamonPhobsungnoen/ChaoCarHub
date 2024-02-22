@@ -76,7 +76,7 @@ const checkLateCar = ref(false)
                   :class="{'is-color-transgreen': checkLateCar }">
                   <div class="card-image has-text-centered">
                             <img class="" src="https://cdn-icons-png.flaticon.com/512/4422/4422557.png" alt="Placeholder image" width="50" height="50">
-                            <br><b>LATE RETURN</b>
+                            <br><b>CAR NOT RETURN</b>
                   </div>
                 </div>
             </div>

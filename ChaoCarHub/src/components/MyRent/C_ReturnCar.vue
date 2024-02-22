@@ -77,6 +77,23 @@ const isReturn = ref(false)
                 <p>{{ item.r_place_return }}</p>
                 <p>{{ item.dayReturn }} เวลา {{ item.r_time_return.slice(0, 5) }} น.</p>
               </div>
+
+              <!-- Check ว่ากดคืนรถหรือยัง ? -->
+              <div v-if="(!myrentStore.hadReturn.includes(item.r_id) && !isReturn)">
+                <!-- r_id : {{myrentStore.hadReturn.includes(item.r_id)}}<br/>
+                isReturn : {{isReturn}} -->
+
+                <div style="color:red;" v-if="(currentDate && item.r_day_return) && (calculateDaysDifference(currentDate, item.r_day_return))>0">
+                  เกินระยะเวลาการคืนรถ
+                  {{ calculateDaysDifference(currentDate, item.r_day_return) }} วัน
+
+                  <!-- คำนวณค่าปรับ : (ค่าเช่ารายวัน*จำนวนวัน) -->
+                  <div> ต้องชำระค่าปรับจำนวน
+                    {{ item.r_totalprice*(calculateDaysDifference(currentDate, item.r_day_return)) }} บาท
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>       
          
@@ -116,4 +133,51 @@ const isReturn = ref(false)
       </div>
     </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      currentDate: ''
+    };
+  },
+  mounted() {
+    this.currentDate = this.getCurrentDate();
+  },
+  computed: {
+    myrentStore() {
+      return this.$store.state.myRent;
+    }
+  },
+  methods: {
+    getCurrentDate() {
+      const current = new Date();
+      const month = (current.getMonth() + 1).toString().padStart(2, '0');
+      const date = `${current.getFullYear()}-${month}-${current.getDate()}`;
+      console.log('Current Date: ', date);
+      return date;
+    },
+    calculateDaysDifference(currentDate, returnDate) {
+      const current = new Date(currentDate);
+      const previous = new Date(returnDate);
+      const timeDifference = current.getTime() - previous.getTime();
+      const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+      return daysDifference;
+    }
+    // calculateDaysDifference(currentDate, returnDate, currentTime, returnTime) {
+    //   const current = new Date(currentDate + 'T' + currentTime);
+    //   const previous = new Date(returnDate + 'T' + returnTime);
+      
+    //   // Calculate the time difference in milliseconds
+    //   const timeDifference = current.getTime() - previous.getTime();
+      
+    //   // Convert milliseconds to days, hours, minutes, seconds
+    //   const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+      
+    //   return daysDifference;
+    // }
+
+  }
+};
+</script>
 
