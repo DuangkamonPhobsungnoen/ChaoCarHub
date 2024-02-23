@@ -208,6 +208,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     }
   };
 
+
   //update button
   const confirmInsert = async (result) => {
     confirmResult.value = result;
@@ -351,13 +352,35 @@ export const UsecrudCarStore = defineStore("car", () => {
   const validateCarStatus = () => {
     const carStatusLower = carStatus.value.toLowerCase();
     if (carStatusLower === '') {
-        error.carStatus.value = 'กรุณากรอกสถานะรถ';
+      error.carStatus.value = 'กรุณากรอกสถานะรถ';
     } else if (carStatusLower !== 'available' && carStatusLower !== 'maintain') {
-        error.carStatus.value = 'กรอกสถานะ Available or Maintain';
+      error.carStatus.value = 'กรอกสถานะ Available or Maintain';
     } else {
-        error.carStatus.value = '';
+      error.carStatus.value = '';
     }
-};
+  };
+
+  const showModalAddCar = ref(false);
+  const addCarModal = () => {
+    resetTextValue()
+    showModalAddCar.value = true;
+    console.log('showModalAddCar---', showModalAddCar.value)
+  }
+
+  const resetTextValue = () => {
+    carIdd.value = '';
+    carCode.value = '';
+    carBrand.value = '';
+    carModel.value = '';
+    carSeat.value = '';
+    carBag.value = '';
+    carPrice.value = '';
+    carImageURL.value = '';
+    showAlertUpdate.value = false;
+    fileImg.value = null;
+    imageURL.value = null;
+    carStatus.value = 'Available';
+  }
 
   //addCar
   async function addCar() {
@@ -382,11 +405,14 @@ export const UsecrudCarStore = defineStore("car", () => {
 
 
     try {
+      showModalAddCar.value = false;
       const response = await axios.post('http://localhost:3000/car', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+      FetchCar()
+
       if (response.data.check === false) {
         const sweet = Swal.fire({
           icon: 'error',
@@ -467,6 +493,8 @@ export const UsecrudCarStore = defineStore("car", () => {
     myCus,
     searchInputCus,
     searchValueCus,
-    toSearchCus
+    toSearchCus,
+    addCarModal,
+    showModalAddCar
   };
 });

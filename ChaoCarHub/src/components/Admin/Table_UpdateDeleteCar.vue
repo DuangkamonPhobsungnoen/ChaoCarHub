@@ -2,10 +2,10 @@
 import { UsecrudCarStore } from "@/stores/crud_Car";
 import { computed, ref, reactive, onMounted } from "vue";
 import Swal from "sweetalert2";
+import AddCarModal from "./AddCarModal.vue";
 
 const CarStore = UsecrudCarStore();
-// const CarStore = UseupdatedeleteCar()
-// const crudCarStore = UsecrudCarStore();
+
 onMounted(CarStore.FetchCar);
 </script>
 
@@ -36,6 +36,21 @@ onMounted(CarStore.FetchCar);
         คัน</b
       >
     </h1>
+    <!-- add car btn -->
+    <div class="columns p-5">
+      <button
+        class="button is-medium is-responsive is-primary column is-3 is-offset-9"
+        @click="CarStore.addCarModal()"
+      >
+        Add Car
+      </button>
+    </div>
+    <!-- add car modal -->
+    <div v-if="CarStore.showModalAddCar">
+      <AddCarModal />
+    </div>
+
+    <!-- update car modal-->
     <div v-if="CarStore.showAlertUpdate">
       <div class="modal has-text-left">
         <div class="card has-background-white">
@@ -230,7 +245,7 @@ onMounted(CarStore.FetchCar);
               <div class="control">
                 <button
                   class="button is-info is-light"
-                  @click="CarStore.confirmInsert(false)"
+                  @click="CarStore.showAlertUpdate = false"
                 >
                   Cancel
                 </button>
