@@ -160,6 +160,33 @@ router.get("/myrent/car", isLoggedIn, async function (req, res, next) {
     }
   });
 
+  //admin late return check 
+   router.put("/admin/lateReturn/:id" ,isLoggedIn, async function (req, res, next) {
+    const conn = await pool.getConnection();
+    await conn.beginTransaction();
+    try {
+      // const getId = await conn.query(
+      //   "SELECT r_id FROM rental WHERE car_id=?",
+      //   [req.params.id]
+      // );
+      // console.log("getId[0][0].r_id", getId[0][0].r_id)
+      //change rental status
+      const results2 = await conn.query(
+        "UPDATE rental SET r_status=? WHERE r_id=?",
+        ["history", req.params.id]
+      );
+      console.log('req.params.id :>> ', req.params.id);
+  
+      await conn.commit();
+      return res.json("อัพเดตสถานะการคืนรถสำเร็จ");
+    } catch (err) {
+      await conn.rollback();
+      return res.status(400).json(err);
+    } finally {
+      conn.release();
+    }
+  });
+
   router.post("/myrent/remove",isLoggedIn, async function (req, res, next) {
     const {rentId} = req.body
     // console.log(req.body)

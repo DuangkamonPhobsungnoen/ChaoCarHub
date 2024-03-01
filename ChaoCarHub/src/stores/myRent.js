@@ -158,7 +158,7 @@ export const UsemyrentStore = defineStore('myrent', () => {
     isCancel.value = false;
     alertMessage.value = `คุณต้องการยืนยันการคืนรถ ${carBrand} ${carModel} ของคุณ ${uName} หรือไม่?`;
     returnCarId.value = reId
-    console.log("reid ", returnCarId.value)
+    console.log("id ", returnCarId.value)
   };
 
   async function showConfirmReturnCancelCar(carBrand, carModel, uName, reId) {
@@ -181,6 +181,7 @@ export const UsemyrentStore = defineStore('myrent', () => {
     confirmResult.value = result;
     showAlertVerified.value = false;
     if (result) {
+      console.log('returnCarId.value :>> ', returnCarId.value);
       try {
         const response = await axios.put(`/admin/return/${returnCarId.value}`);
         const sweet = Swal.fire({
@@ -192,13 +193,33 @@ export const UsemyrentStore = defineStore('myrent', () => {
         allReturncar.value = allReturncar.value.filter((car) => car.re_id !== returnCarId.value)
       } catch (error) {
         console.error(error);
-        const response = await axios.put(`/admin/return/${returnCarId.value}`);
+        // const response = await axios.put(`/admin/return/${returnCarId.value}`);
+        // const sweet = Swal.fire({
+        //   icon: "error",
+        //   title: 'ยืนยันการคืนรถไม่สำเร็จ อาจเกิดข้อผิดพลาดบางอย่าง!', 
+        //   confirmButtonText: 'OK',
+        //   confirmButtonColor: '#41BEB1'
+        // })
+      }
+    }
+  }
+
+  async function confirmLateCarVerified(result) {
+    confirmResult.value = result;
+    showAlertVerified.value = false;
+    if (result) {
+      console.log('confirmLateCarVerified() :>> ', returnCarId.value);
+      try {
+        const response = await axios.put(`/admin/lateReturn/${returnCarId.value}`);
         const sweet = Swal.fire({
-          icon: "error",
-          title: 'ยืนยันการคืนรถไม่สำเร็จ อาจเกิดข้อผิดพลาดบางอย่าง!', 
+          icon: "success",
+          title: 'ยืนยันการคืนรถสำเร็จแล้ว!', 
           confirmButtonText: 'OK',
           confirmButtonColor: '#41BEB1'
         })
+        allReturncar.value = allReturncar.value.filter((car) => car.re_id !== returnCarId.value)
+      } catch (error) {
+        console.error(error);
       }
     }
   }
@@ -243,6 +264,7 @@ export const UsemyrentStore = defineStore('myrent', () => {
     FetchReturncar,
     allReturncar,
     confirmVerified,
+    confirmLateCarVerified,
     showAlertVerified, 
     btnCancelPickup,
     showCancelPickupConfirmation,

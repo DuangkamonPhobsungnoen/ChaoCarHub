@@ -97,18 +97,20 @@ const isReturn = ref(false)
           </p>
         </div>
         <!-- <h1> {{ isReturn }}</h1> -->
-        <a class="column is-size-6"
+        <div class="column is-size-6"
           v-if="!myrentStore.hadReturn.includes(item.r_id) && isReturn == false && (calculateDaysDifference(currentDate, item.r_day_return)) > 0">
           <div class="pb-2" style="color:red;"> ต้องชำระค่าปรับจำนวน
             {{ ((item.r_totalprice/item.r_amountdays) * (calculateDaysDifference(currentDate, item.r_day_return))) + ((item.r_totalprice/item.r_amountdays) * (calculateDaysDifference(currentDate, item.r_day_return))/5) }} บาท
           </div>
-          <router-link to="/pay" @click="myrentStore.btnReturn(item.r_id), isReturn = true" class="button btn has-text-white font"
+          <b>
+            กรุณาติดต่อจ่ายค่าปรับที่ศูนย์บริการ
+          </b>
+          <!-- <button @click="myrentStore.btnReturn(item.r_id), isReturn = true" class="button btn has-text-white font"
             style="width: 100%">
-            ชำระเงิน
-          </router-link>
-        </a>
-        <a class="column is-size-6"
-          v-else-if="!myrentStore.hadReturn.includes(item.r_id) && isReturn == false && (calculateDaysDifference(currentDate, item.r_day_return)) < 0">
+            กรุณาติดต่อจ่ายค่าปรับที่ศูนย์บริการ
+          </button> -->
+        </div>
+        <a class="column is-size-6" v-else-if="!myrentStore.hadReturn.includes(item.r_id) && isReturn == false && (calculateDaysDifference(currentDate, item.r_day_return)) < 0">
           <button @click="myrentStore.btnReturn(item.r_id), isReturn = true" class="button btn has-text-white font"
             style="width: 100%">
             คืนรถ

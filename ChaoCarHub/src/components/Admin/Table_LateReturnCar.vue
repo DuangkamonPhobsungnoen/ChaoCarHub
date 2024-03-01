@@ -31,12 +31,12 @@ onMounted(returnCarStore.getLateReturn);
                     </p>
                     <br />
                     <div class="buttons">
-                      <button @click="myrentStore.confirmVerified(true)"
+                      <button @click="myrentStore.confirmLateCarVerified(true)"
                         class="button is-size-6 has-background-success has-text-white"
                       >
                         Ok
                       </button>
-                      <button @click="myrentStore.confirmVerified(false)"
+                      <button @click="myrentStore.confirmLateCarVerified(false)"
                         class="button is-size-6 has-background-danger has-text-white"
                       >
                         Cancel
@@ -57,6 +57,7 @@ onMounted(returnCarStore.getLateReturn);
           <th>วันคืนรถ</th>
           <th>จำนวนวันที่เกินกำหนด</th>
           <th>ค่าปรับ</th> 
+          <th>ตรวจสอบการจ่ายค่าปรับ</th>
           
         </tr>
         <tr  v-for="item in returnCarStore.lateCarValue" :key="item.re_id">
@@ -76,20 +77,20 @@ onMounted(returnCarStore.getLateReturn);
           
 
 
-          <!-- <td class="has-text-danger">
+          <td class="has-text-danger">
             <div class="control">
               <div class="level-item">
-                <button class="button is-link" @click="myrentStore.showConfirmReturnCar(item.car_brand, item.car_model, item.u_fname, item.re_id)">
+                <button class="button is-danger" @click="myrentStore.showConfirmReturnCar(item.car_brand, item.car_model, item.u_fname, item.r_id)">
                   <span>Verified</span>
-                  <span class="icon is-small">
+                  <!-- <span class="icon is-small">
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/871/871896.png"
                     />
-                  </span>
+                  </span> -->
                 </button>
               </div>
             </div>
-          </td>    -->
+          </td>   
         </tr>
       </table>
     <!-- </div>
