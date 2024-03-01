@@ -1,27 +1,20 @@
-FROM node:18-alpine as base
+# เลือก Base Image
+FROM node:14-alpine
 
-WORKDIR /src
+# กำหนด Working Directory
+WORKDIR /app
 
-COPY package*.json /
+# คัดลอก Package Files
+COPY package*.json ./
 
-EXPOSE 3000
-
-FROM base as production
-
-ENV NODE_ENV=production
-
-RUN npm ci
-
-COPY . /
-
-CMD ["node", "bin/www"]
-
-FROM base as dev
-
-ENV NODE_ENV=development
-
+# รัน npm install
 RUN npm install
 
-COPY . /
+# คัดลอกไฟล์โปรเจค
+COPY . .
 
+# เปิดพอร์ต
+EXPOSE 3000
+
+# ระบุคำสั่งเริ่มต้น
 CMD ["npm", "run", "dev"]
