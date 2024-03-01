@@ -1,9 +1,16 @@
 <script setup>
-import { computed, ref, reactive, onMounted } from "vue";
-import { UsemyrentStore } from "@/stores/myRent"
-const myrentStore  = UsemyrentStore()
-onMounted(myrentStore.FetchReturncar);
+  import { computed, onMounted } from "vue";
+  import { UsemyrentStore } from "@/stores/myRent";
+
+  const myrentStore = UsemyrentStore();
+
+  onMounted(myrentStore.FetchReturncar);
+
+  const sortedReturnCars = computed(() => {
+    return myrentStore.allReturncar.slice().sort((a, b) => a.r_status === 'cancel' ? -1 : 1);
+  });
 </script>
+
 <template>
      <div class="p-5 is-size-5 has-text-centered" >
       <div >
@@ -54,6 +61,11 @@ onMounted(myrentStore.FetchReturncar);
                   >
                     Ok
                   </button>
+                  <button @click="myrentStore.confirmCancelVerified(false)"
+                    class="button is-size-6 has-background-danger has-text-white"
+                  >
+                    Cancel
+                  </button>
                 </div>
               </div>
             </div>
@@ -69,7 +81,7 @@ onMounted(myrentStore.FetchReturncar);
         <th>วันและเวลาคืนรถ</th>
         <th>ตรวจสอบการคืนรถ</th>
       </tr>
-      <tr  v-for="item in myrentStore.allReturncar" :key="item.re_id" :style="{ 'background-color': item.r_status === 'cancel' ? 'hsl(0, 100%, 90%, 50%)' : '' }">
+      <tr v-for="item in sortedReturnCars" :key="item.re_id" :style="{ 'background-color': item.r_status === 'cancel' ? 'hsl(0, 100%, 90%, 50%)' : '' }">
         <td> {{ item.u_id }}</td>
         <td> {{ item.u_fname }} {{ item.u_lname }}</td>
         <td> {{ item.car_code }}</td>
@@ -94,7 +106,7 @@ onMounted(myrentStore.FetchReturncar);
               </button>
             </div>
           </div>
-        </td>   
+        </td>
       </tr>
     </table>
       </div>

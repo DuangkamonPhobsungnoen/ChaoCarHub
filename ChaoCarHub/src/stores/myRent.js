@@ -218,13 +218,6 @@ export const UsemyrentStore = defineStore('myrent', () => {
         allReturncar.value = allReturncar.value.filter((car) => car.re_id !== returnCarId.value)
       } catch (error) {
         console.error(error);
-        const response = await axios.put(`/admin/return/${returnCarId.value}`);
-        const sweet = Swal.fire({
-          icon: "error",
-          title: 'ยืนยันการคืนรถไม่สำเร็จ อาจเกิดข้อผิดพลาดบางอย่าง!', 
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#41BEB1'
-        })
       }
     }
   }

@@ -81,6 +81,27 @@ router.get("/myrent/car", isLoggedIn, async function (req, res, next) {
   
   });
 
+  // admin verify cancel pickup
+  router.put("/admin/returnCancelPickup/:id" ,isLoggedIn, async function (req, res, next) {
+    const conn = await pool.getConnection();
+    await conn.beginTransaction();
+    try {
+      //change return_car status
+      const results1 = await conn.query(
+        "UPDATE return_car SET re_status=? WHERE re_id=?",
+        ["คืนรถสำเร็จ", req.params.id]
+      );
+  
+      await conn.commit();
+      return res.json("รับทราบการยกเลิกรับรถสำเร็จ");
+    } catch (err) {
+      await conn.rollback();
+      return res.status(400).json(err);
+    } finally {
+      conn.release();
+    }
+  });
+
   //button return car
   router.post("/myrent/return/:id",isLoggedIn, async function (req, res, next) {
     try {
@@ -107,28 +128,6 @@ router.get("/myrent/car", isLoggedIn, async function (req, res, next) {
     }
   
   });
-  
-  // admin verify cancel pickup
-  router.put("/admin/returnCancelPickup/:id" ,isLoggedIn, async function (req, res, next) {
-    const conn = await pool.getConnection();
-    await conn.beginTransaction();
-    try {
-      //change return_car status
-      const results1 = await conn.query(
-        "UPDATE return_car SET re_status=? WHERE re_id=?",
-        ["คืนรถสำเร็จ", req.params.id]
-      );
-  
-      await conn.commit();
-      return res.json("รับทราบการยกเลิกรับรถสำเร็จ");
-    } catch (err) {
-      await conn.rollback();
-      return res.status(400).json(err);
-    } finally {
-      conn.release();
-    }
-  });
-
 
   //admin return car check
   router.put("/admin/return/:id" ,isLoggedIn, async function (req, res, next) {
