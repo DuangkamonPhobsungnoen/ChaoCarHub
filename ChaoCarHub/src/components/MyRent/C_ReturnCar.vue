@@ -102,10 +102,10 @@ const isReturn = ref(false)
           <div class="pb-2" style="color:red;"> ต้องชำระค่าปรับจำนวน
             {{ ((item.r_totalprice/item.r_amountdays) * (calculateDaysDifference(currentDate, item.r_day_return))) + ((item.r_totalprice/item.r_amountdays) * (calculateDaysDifference(currentDate, item.r_day_return))/5) }} บาท
           </div>
-          <button @click="myrentStore.btnReturn(item.r_id), isReturn = true" class="button btn has-text-white font"
+          <router-link to="/pay" @click="myrentStore.btnReturn(item.r_id), isReturn = true" class="button btn has-text-white font"
             style="width: 100%">
             ชำระเงิน
-          </button>
+          </router-link>
         </a>
         <a class="column is-size-6"
           v-else-if="!myrentStore.hadReturn.includes(item.r_id) && isReturn == false && (calculateDaysDifference(currentDate, item.r_day_return)) < 0">
@@ -154,18 +154,6 @@ export default {
       const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
       return daysDifference;
     }
-    // calculateDaysDifference(currentDate, returnDate, currentTime, returnTime) {
-    //   const current = new Date(currentDate + 'T' + currentTime);
-    //   const previous = new Date(returnDate + 'T' + returnTime);
-
-    //   // Calculate the time difference in milliseconds
-    //   const timeDifference = current.getTime() - previous.getTime();
-
-    //   // Convert milliseconds to days, hours, minutes, seconds
-    //   const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-
-    //   return daysDifference;
-    // }
 
   }
 };

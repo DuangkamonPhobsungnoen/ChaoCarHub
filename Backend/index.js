@@ -14,6 +14,7 @@ const carRouter = require('./routes/crud_car')
 const userRouter = require('./routes/user')
 const paymentRouter = require('./routes/payment')
 const myrentRouter = require('./routes/myrent')
+const returnCar = require('./routes/return_car')
 
 
 // Statics
@@ -27,6 +28,7 @@ app.use(carRouter.router)
 app.use(userRouter.router)
 app.use(paymentRouter.router)
 app.use(myrentRouter.router)
+app.use(returnCar.router)
 // app.use(commentRouter.router)
 
 app.listen(3000, () => {
