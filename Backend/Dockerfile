@@ -1,5 +1,5 @@
 # เลือก Base Image
-FROM node:14-alpine
+FROM node:21-alpine
 
 # กำหนด Working Directory
 WORKDIR /app

@@ -29,6 +29,8 @@ app.use(paymentRouter.router)
 app.use(myrentRouter.router)
 // app.use(commentRouter.router)
 
+app.get('/', (req, res) => res.send('Hello world!'))
+
 app.listen(3000, () => {
   console.log(`Example app listening at http://localhost:3000`)
 })
