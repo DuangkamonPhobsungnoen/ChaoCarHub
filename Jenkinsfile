@@ -11,6 +11,7 @@ pipeline {
     stage('Build image frontend') {
       steps {
         dir('ChaoCarHub/ChaoCarHub/') {
+          sh 'pwd'
           sh 'docker build -t duangkamon/devtool-frontend:latest .'
         }
       }
