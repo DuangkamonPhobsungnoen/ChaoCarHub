@@ -15,7 +15,7 @@ pipeline {
         }
       }
     }
-    stage('Build Vue.js') {
+    stage('Build docker') {
       steps {
         dir('ChaoCarHub') {
           sh 'docker-compose build'
