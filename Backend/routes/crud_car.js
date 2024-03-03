@@ -113,13 +113,14 @@ router.post("/car", upload.single("myImageCar"), async function (req, res, next)
     const [rows1, fields1] = await conn.query('select car_code from car where car_code = ?',
       [car_code])
     if (rows1.length === 0) {
-      console.log("id is duplicate")
+     
       const results = await conn.query(
         "INSERT INTO car(`car_code`, `car_brand`, `car_model`, `car_seat`, `car_bag`, `car_rentprice`, `car_img`, `car_status`) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
         [car_code, car_brand, car_model, car_seat, car_bag, car_rentprice, file.path.substr(6), car_status]
       );
     }
     else {
+      console.log("id is duplicate")
       return res.json({ check: false })
   }
 

@@ -393,6 +393,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     validateFileType()
     validateCarStatus()
 
+
     let formData = new FormData();
     formData.append('car_code', carCode.value);
     formData.append('car_brand', carBrand.value);
