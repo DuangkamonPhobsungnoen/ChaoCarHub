@@ -1,12 +1,10 @@
 version: '3.3'
 services:
-
-  backend:
-    image: duangkamon/devtool-backend
-    ports:
-      - "3000:3000"
-  
   frontend:
-    image: duangkamon/devtool-frontend
+    image: duangkamon/devtool-frontend:latest
     ports:
       - "80:80"
+  backend:
+    image: duangkamon/devtool-backend:latest
+    ports:
+      - "3000:3000"
