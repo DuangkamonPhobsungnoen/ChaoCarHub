@@ -11,15 +11,15 @@ pipeline {
     stage('Build image frontend') {
       steps {
         dir('ChaoCarHub/') {
-          sh 'pwd'
-          sh 'ls -l'
           sh 'docker build -t duangkamon/devtool-frontend:latest .'
         }
       }
     }
     stage('Build image backend') {
       steps {
-        dir('ChaoCarHub/Backend/') {
+        dir('Backend/') {
+          sh 'pwd'
+          sh 'ls -l'
           sh 'docker build -t duangkamon/devtool-backend:latest .'
         }
       }
