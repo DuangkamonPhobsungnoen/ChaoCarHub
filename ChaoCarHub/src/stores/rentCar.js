@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import axios from 'axios';
+import axios from '../plugins/axios';
 import { computed, ref, reactive, onMounted } from "vue";
 import { useLocalStorage } from '@vueuse/core'
 import { useRouter } from 'vue-router'
@@ -39,7 +39,7 @@ export const UserentCarStore = defineStore('rent', () => {
   const carDetail = ref({})
   const fetchSingleCar = async (id) => {
     console.log(id)
-    return (await axios.get(`http://localhost:3000/detailcar/${id}`)).data[0]
+    return (await axios.get(`/detailcar/${id}`)).data[0]
   }
 
   const filterCar = ref([])
@@ -59,7 +59,7 @@ export const UserentCarStore = defineStore('rent', () => {
     //store rentInfo in localstorage
     rentData.value = rentInfo
     // console.log(rentData.value.dayPickup)
-    const fetchingData = await axios.post("http://localhost:3000/search", {
+    const fetchingData = await axios.post("/search", {
       brand: filBrand.value,
       price: filPrice.value,
       seat: filSeat.value,
@@ -134,7 +134,7 @@ export const UserentCarStore = defineStore('rent', () => {
         })
         return;
       }
-      const fetchingData = await axios.post("http://localhost:3000/rent", {
+      const fetchingData = await axios.post("/rent", {
         totalPrice: totalPrice,
         timePickup: rentData.value.timePickup,
         dayPickup: rentData.value.dayPickup,

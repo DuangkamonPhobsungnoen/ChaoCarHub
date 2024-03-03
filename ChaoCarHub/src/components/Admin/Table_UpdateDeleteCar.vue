@@ -61,7 +61,7 @@ onMounted(CarStore.FetchCar);
                 <div class="card-image px-4">
                   <img
                     id="imgg"
-                    :src="`http://localhost:3000/${CarStore.carImageURL}`"
+                    :src="`http://34.143.132.66:3000/${CarStore.carImageURL}`"
                     width="250"
                     height="200"
                   />
@@ -297,7 +297,7 @@ onMounted(CarStore.FetchCar);
         <td>
           <div class="card-image px-3">
             <figure class="image is-4by3">
-              <img :src="`http://localhost:3000/${item.car_img}`" alt="" />
+              <img :src="`http://34.143.132.66:3000/${item.car_img}`" alt="" />
             </figure>
           </div>
         </td>

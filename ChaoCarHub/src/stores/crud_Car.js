@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { computed, ref, reactive, onMounted } from "vue";
-import axios from "axios";
+import axios from "../plugins/axios";
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 
@@ -10,7 +10,7 @@ export const UsecrudCarStore = defineStore("car", () => {
   //FetchCar
   const carvalue = ref([]);
   const FetchCar = async () => {
-    const fetchingData = await axios.get("http://localhost:3000/car");
+    const fetchingData = await axios.get("/car");
     carvalue.value = fetchingData.data;
   };
 
@@ -24,7 +24,7 @@ export const UsecrudCarStore = defineStore("car", () => {
 
   const searchValue = async () => {
     console.log('searchInput searchValue', searchInput.value)
-    const fetchingData = await axios.get('http://localhost:3000/search',
+    const fetchingData = await axios.get('/search',
       {
         params: {
           searchInput: searchInput.value
@@ -43,7 +43,7 @@ export const UsecrudCarStore = defineStore("car", () => {
   }
 
   const searchValueCus = async () => {
-    const fetchingData = await axios.get('http://localhost:3000/searchcus',
+    const fetchingData = await axios.get('/searchcus',
       {
         params: {
           searchInputCus: searchInputCus.value
@@ -57,28 +57,28 @@ export const UsecrudCarStore = defineStore("car", () => {
   //FetchCarToyota
   const toyotacar = ref([])
   const FetchCarToyota = async () => {
-    const fetchingData = await axios.get("http://localhost:3000/car/toyota");
+    const fetchingData = await axios.get("/car/toyota");
     toyotacar.value = fetchingData.data;
   };
 
   //FetchCarNissan
   const nissancar = ref([])
   const FetchCarNissan = async () => {
-    const fetchingData = await axios.get("http://localhost:3000/car/nissan");
+    const fetchingData = await axios.get("/car/nissan");
     nissancar.value = fetchingData.data;
   };
 
   //FetchCarHonda
   const hondacar = ref([])
   const FetchCarHonda = async () => {
-    const fetchingData = await axios.get("http://localhost:3000/car/honda");
+    const fetchingData = await axios.get("/car/honda");
     hondacar.value = fetchingData.data;
   };
 
   //FetchCarOther
   const othercar = ref([])
   const FetchCarOther = async () => {
-    const fetchingData = await axios.get("http://localhost:3000/car/other");
+    const fetchingData = await axios.get("/car/other");
     othercar.value = fetchingData.data;
   };
 
@@ -102,7 +102,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     if (result) {
       // ถ้ากดตกลงก็จะลบ card
       try {
-        axios.delete(`http://localhost:3000/car/${carId.value}`, {
+        axios.delete(`/car/${carId.value}`, {
           carId: carId.value
         })
         carvalue.value = carvalue.value.filter((car) => car.car_id !== carId.value)
@@ -121,7 +121,7 @@ export const UsecrudCarStore = defineStore("car", () => {
   //editCar
   const carupdate = ref([]);
   async function editCar(carId) {
-    const fetchingData = await axios.get(`http://localhost:3000/car/${carId}`);
+    const fetchingData = await axios.get(`/car/${carId}`);
     carupdate.value = fetchingData.data;
     console.log(carupdate.value)
   }
@@ -185,7 +185,7 @@ export const UsecrudCarStore = defineStore("car", () => {
   //fetchCarEdit fetch car เพื่อเอามาแก้ไข
   const fetchCarEdit = async (cId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/car/${cId}`)
+      const response = await axios.get(`/car/${cId}`)
         .then((response) => {
           const carData = response.data[0];
           console.log(carData.car_id)
@@ -239,7 +239,7 @@ export const UsecrudCarStore = defineStore("car", () => {
         console.log("file ", fileImg.value)
 
         const response = await axios.put(
-          `http://localhost:3000/updatecar/${carIdd.value}`,
+          `/updatecar/${carIdd.value}`,
           formData,
           {
             headers: {
@@ -393,6 +393,7 @@ export const UsecrudCarStore = defineStore("car", () => {
     validateFileType()
     validateCarStatus()
 
+
     let formData = new FormData();
     formData.append('car_code', carCode.value);
     formData.append('car_brand', carBrand.value);
@@ -406,7 +407,7 @@ export const UsecrudCarStore = defineStore("car", () => {
 
     try {
       showModalAddCar.value = false;
-      const response = await axios.post('http://localhost:3000/car', formData, {
+      const response = await axios.post('/car', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -441,7 +442,7 @@ export const UsecrudCarStore = defineStore("car", () => {
 
   const cusValue = ref([])
   const myCus = async () => {
-    const fetchingData = await axios.get("http://localhost:3000/admin/cus");
+    const fetchingData = await axios.get("/admin/cus");
     cusValue.value = fetchingData.data;
   };
   return {
