@@ -26,14 +26,13 @@ pipeline {
     }
     stage('Push to docker hub') {
       steps {
-        sh 'docker push duangkamon/devtool-backend:latest'
         sh 'docker push duangkamon/devtool-frontend:latest'
+        sh 'docker push duangkamon/devtool-backend:latest'
       }
     }
     stage('run container') {
       steps {
-        sh 'docker run -d -p 80:80 --name frontend duangkamon/devtool-frontend:latest'
-        sh 'docker run -d -p 3000:3000 --name backend duangkamon/devtool-backend:latest'
+        sh 'docker-compose up -d'
       }
     }
     stage('check docker run image') {
