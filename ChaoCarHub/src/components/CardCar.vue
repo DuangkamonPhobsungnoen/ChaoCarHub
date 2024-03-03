@@ -9,6 +9,7 @@ defineProps({
 
 <template>
   <div id="card_product " class="column is-one-third" >
+    <h1>TTTTTTTT</h1>
     <div class="card has-text-centered is-border-radius">
       <div class="card-image px-5 pt-2" >
         <figure class="image is-4by3">
