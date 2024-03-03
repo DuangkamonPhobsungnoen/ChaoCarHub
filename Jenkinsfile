@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Build image frontend') {
       steps {
-        dir('ChaoCarHub/ChaoCarHub/') {
+        dir('ChaoCarHub/') {
           sh 'pwd'
           sh 'ls -l'
           sh 'docker build -t duangkamon/devtool-frontend:latest .'
