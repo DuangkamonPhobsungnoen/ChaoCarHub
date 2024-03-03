@@ -1,13 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('down container') {
-      steps {
-        dir('ChaoCarHub') {
-          sh "docker-compose down"
-        }
-      }
-    }
     stage('login docker') {
       steps {
         script {
@@ -15,23 +8,32 @@ pipeline {
         }
       }
     }
-    stage('Build docker') {
+    stage('Build image frontend') {
       steps {
         dir('ChaoCarHub') {
-          sh 'docker-compose build'
+          sh 'cd /ChaoCarHub'
+          sh 'docker build -t duangkamon/devtool-frontend:latest .'
+        }
+      }
+    }
+    stage('Build image backend') {
+      steps {
+        dir('ChaoCarHub') {
+          sh 'cd /Backend'
+          sh 'docker build -t duangkamon/devtool-backend:latest .'
         }
       }
     }
     stage('Push to docker hub') {
       steps {
-        sh 'docker-compose push'
+        sh 'docker push duangkamon/devtool-backend:latest'
+        sh 'docker push duangkamon/devtool-frontend:latest'
       }
     }
-    stage('docker run image') {
+    stage('run container') {
       steps {
-        dir('ChaoCarHub') {
-          sh "docker-compose up -d"
-        }
+        sh 'docker run -d -p 80:80 --name frontend devtool-frontend:latest'
+        sh 'docker run -d -p 3000:3000 --name backend devtool-backend:latest'
       }
     }
     stage('check docker run image') {
