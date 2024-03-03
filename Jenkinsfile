@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages {
+    stage('stop container') {
+      steps {
+        sh 'docker-compose down'
+      }
+    }
     stage('login docker') {
       steps {
         script {
