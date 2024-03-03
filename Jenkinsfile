@@ -10,8 +10,8 @@ pipeline {
     }
     stage('Build image frontend') {
       steps {
-        dir('ChaoCarHub') {
-          sh 'cd /ChaoCarHub'
+        dir('ChaoCarHub/') {
+          sh 'cd ChaoCarHub'
           sh 'docker build -t duangkamon/devtool-frontend:latest .'
         }
       }
@@ -19,7 +19,7 @@ pipeline {
     stage('Build image backend') {
       steps {
         dir('ChaoCarHub') {
-          sh 'cd /Backend'
+          sh 'cd Backend/'
           sh 'docker build -t duangkamon/devtool-backend:latest .'
         }
       }
