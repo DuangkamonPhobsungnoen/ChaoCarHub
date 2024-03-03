@@ -1,10 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('logout') {
+    stage('down container') {
       steps {
-        script {
-          sh 'docker logout'
+        dir('ChaoCarHub') {
+          sh "docker-compose down"
         }
       }
     }
