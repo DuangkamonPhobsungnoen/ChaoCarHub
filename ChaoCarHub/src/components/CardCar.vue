@@ -20,7 +20,7 @@ defineProps({
           {{ item.car_brand }} {{ item.car_model }} 
         </p>
         <div class="subtitle is-size-7 ">
-          <img src="../assets/image_people" alt=" "/>
+          <img src="../assets/image_people.png" alt=" "/>
           <b>{{ item.car_seat }} ที่นั้ง <br />
             เริ่มต้น {{ item.car_rentprice }} บาท/วัน</b>
         </div>
