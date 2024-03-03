@@ -32,8 +32,8 @@ pipeline {
     }
     stage('run container') {
       steps {
-        sh 'docker run -d -p 80:80 --name frontend devtool-frontend:latest'
-        sh 'docker run -d -p 3000:3000 --name backend devtool-backend:latest'
+        sh 'docker run -d -p 80:80 --name frontend duangkamon/devtool-frontend:latest'
+        sh 'docker run -d -p 3000:3000 --name backend duangkamon/devtool-backend:latest'
       }
     }
     stage('check docker run image') {
