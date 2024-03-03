@@ -1,5 +1,5 @@
 <template>
-           <section class="hero has-background-danger">
+           <section class="hero is-gradient">
             <p class="has-text-white has-text-centered is-size-2 pt-6"><b>บริการเช่ารถภายในจังหวัดกรุงเทพมหานคร</b></p><br>
             <div class="column px-6">
                 <div class="columns">
