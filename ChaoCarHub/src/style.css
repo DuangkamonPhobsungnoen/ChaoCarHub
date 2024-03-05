@@ -73,7 +73,7 @@ body {
 }
 
 .input_username {
-    background-image: url(./assets/input_image/username.png) no-repeat left;
+    background-image: url('./assets/input_image/username.png') no-repeat left;
     background-size: 20px;
     padding-left: 40px;
     background-position: 12px;
@@ -82,7 +82,7 @@ body {
 }
 
 .input_password {
-    background-image: url(./assets/input_image/password.png) no-repeat left;
+    background-image: url('./assets/input_image/password.png') no-repeat left;
     background-size: 20px;
     padding-left: 40px;
     background-position: 12px;
@@ -91,7 +91,7 @@ body {
 }
 
 .input_phone {
-    background-image: url(./assets/input_image/phone.png) no-repeat left;
+    background-image: url('./assets/input_image/phone.png') no-repeat left;
     background-size: 23px;
     padding-left: 40px;
     background-position: 12px;
