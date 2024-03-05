@@ -19,21 +19,21 @@ import CardCar from '../CardCar.vue';
             <b class="is-size-3" >Toyota</b>
             <br /><br />
             <figure class="image is-3by3">
-              <img src="https://media.discordapp.net/attachments/1072181252964233328/1077261540748701726/home_car.png " alt="Placeholder image "/>
+              <img src="../../assets/popular_car/1.png" alt="Placeholder image "/>
             </figure>
           </div>
           <div class="card-image  pt-6">
             <b class="is-size-3">Nissan</b>
             <br /><br />
             <figure class="image is-3by3">
-              <img src="https://cdn.discordapp.com/attachments/1072181252964233328/1077263056326889543/gqdupg.png" alt="Placeholder image "/>
+              <img src="../../assets/popular_car/2.png" alt="Placeholder image "/>
             </figure>
           </div>
           <div class="card-image  pt-6">
             <b class="is-size-3">Honda </b>
             <br /><br />
             <figure class="image is-3by3">
-              <img src="https://media.discordapp.net/attachments/1072181252964233328/1077265050923962449/1-honda-city-can-tho-auto-removebg-preview.png?width=765&height=510" alt="Placeholder image "/>
+              <img src="../../assets/popular_car/3.png" alt="Placeholder image "/>
             </figure>
           </div>
         </div>

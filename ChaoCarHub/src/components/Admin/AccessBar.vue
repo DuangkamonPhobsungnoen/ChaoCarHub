@@ -31,7 +31,7 @@ const checkLateCar = ref(false);
         (checkLateCar = false)
         " :class="{ 'is-color-transgreen': home }">
         <div class="card-image has-text-centered">
-          <img src="https://cdn-icons-png.flaticon.com/512/747/747589.png" alt="Placeholder image" width="50"
+          <img src="../../assets/access_bar/1.png" alt="Placeholder image" width="50"
             height="50" />
           <br /><b>HOME</b>
         </div>
@@ -48,9 +48,9 @@ const checkLateCar = ref(false);
         (checkLateCar = false)
         " :class="{ 'is-color-transgreen': statuscus }">
         <div class="card-image has-text-centered">
-          <img src="https://cdn-icons-png.flaticon.com/512/5249/5249378.png" alt="Placeholder image" width="50"
+          <img src="../../assets/access_bar/2.png" alt="Placeholder image" width="50"
             height="50" />
-          <img src="https://cdn-icons-png.flaticon.com/512/10533/10533005.png" alt="Placeholder image" width="50"
+          <img src="../../assets/access_bar/3.png" alt="Placeholder image" width="50"
             height="50" />
           <br /><b>CUSTOMER</b>
         </div>
@@ -67,9 +67,9 @@ const checkLateCar = ref(false);
         (checkLateCar = false)
         " :class="{ 'is-color-transgreen': updatedelete }">
         <div class="card-image has-text-centered">
-          <img src="https://cdn-icons-png.flaticon.com/512/3133/3133900.png" alt="Placeholder image" width="50"
+          <img src="../../assets/access_bar/4.png" alt="Placeholder image" width="50"
             height="50" />
-          <img src="https://cdn-icons-png.flaticon.com/512/871/871867.png" alt="Placeholder image" width="50"
+          <img src="../../assets/access_bar/5.png" alt="Placeholder image" width="50"
             height="50" />
           <br /><b>MANAGE CAR</b>
         </div>
@@ -86,7 +86,7 @@ const checkLateCar = ref(false);
         (checkLateCar = false)
         " :class="{ 'is-color-transgreen': payment }">
         <div class="card-image has-text-centered">
-          <img src="https://cdn-icons-png.flaticon.com/512/5688/5688249.png" alt="Placeholder image" width="50"
+          <img src="../../assets/access_bar/6.png" alt="Placeholder image" width="50"
             height="50" />
           <br /><b>PAYMENT</b>
         </div>
@@ -103,7 +103,7 @@ const checkLateCar = ref(false);
         (checkLateCar = false)
         " :class="{ 'is-color-transgreen': returncar }">
         <div class="card-image has-text-centered">
-          <img class="" src="https://cdn-icons-png.flaticon.com/512/4422/4422557.png" alt="Placeholder image" width="50"
+          <img class="" src="../../assets/access_bar/7.png" alt="Placeholder image" width="50"
             height="50" />
           <br /><b>CAR RETURNED</b>
         </div>
@@ -120,7 +120,7 @@ const checkLateCar = ref(false);
         (checkLateCar = true)
         " :class="{ 'is-color-transgreen': checkLateCar }">
         <div class="card-image has-text-centered">
-          <img class="" src="https://cdn-icons-png.flaticon.com/512/4422/4422557.png" alt="Placeholder image" width="50"
+          <img class="" src="../../assets/access_bar/7.png" alt="Placeholder image" width="50"
             height="50" />
           <br /><b>LATE RETURN</b>
         </div>
