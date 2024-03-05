@@ -11,25 +11,25 @@
                                         ขั้นตอนง่ายๆในการใช้บริการเช่ารถ </p>
                                     <div class="column pt-4">
                                         <p class="column_number is-size-5 has-text-white">
-                                            <img src="https://media.discordapp.net/attachments/1072181252964233328/1076538656891871343/8921537.png " height="30 " width="30 ">
+                                            <img src="../../assets/heroinhome/1.png" height="30 " width="30 ">
                                             <span class="pl-2">ระบุวันเดินทาง</span>
                                         </p>
                                     </div>
                                     <div class="column pt-4">
                                         <p class="column_number is-size-5 has-text-white">
-                                            <img src="https://media.discordapp.net/attachments/1072181252964233328/1076542459863105676/8921602.png " height="30 " width="30 ">
+                                            <img src="../../assets/heroinhome/2.png" height="30 " width="30 ">
                                             <span class="pl-2">ระบุรุ่นรถ/ช่วงราคา/จำนวนที่นั่งที่ต้องการ</span>
                                         </p>
                                     </div>
                                     <div class="column pt-4">
                                         <p class="column_number is-size-5 has-text-white">
-                                            <img src="https://media.discordapp.net/attachments/1072181252964233328/1076542609008365669/8921657.png " height="30 " width="30 ">
+                                            <img src="../../assets/heroinhome/3.png" height="30 " width="30 ">
                                             <span class="pl-2">กดค้นหารถ</span>
                                         </p>
                                     </div>
                                     <div class="column pt-4">
                                         <p class="column_number is-size-5 has-text-white">
-                                            <img src="https://media.discordapp.net/attachments/1072181252964233328/1076542525931802734/8921717.png " height="30 " width="30 ">
+                                            <img src="../../assets/heroinhome/4.png" height="30 " width="30 ">
                                             <span class="pl-2">กดจองรถที่ต้องการ</span>
                                         </p>
                                     </div>
