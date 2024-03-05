@@ -73,7 +73,7 @@ body {
 }
 
 .input_username {
-    background: url("https://media.discordapp.net/attachments/1072181252964233328/1073651595889356931/747545.png?ex=65f48077&is=65e20b77&hm=481400d3ee36b30fe5c32362ee7b938f58ce12f2d8d8642107660f3d244b51f0&=&format=webp&quality=lossless&width=640&height=640") no-repeat left;
+    background-image: url(./assets/input_image/username.png) no-repeat left;
     background-size: 20px;
     padding-left: 40px;
     background-position: 12px;
@@ -82,7 +82,7 @@ body {
 }
 
 .input_password {
-    background: url("https://media.discordapp.net/attachments/1072181252964233328/1073651392939573410/9263996.png?ex=65f48047&is=65e20b47&hm=d0a8e95f5c461d96e84dd88ec3398facad10d6656f773ff6e18458dd7bf3ca9a&=&format=webp&quality=lossless&width=640&height=640") no-repeat left;
+    background-image: url(./assets/input_image/password.png) no-repeat left;
     background-size: 20px;
     padding-left: 40px;
     background-position: 12px;
@@ -91,7 +91,7 @@ body {
 }
 
 .input_phone {
-    background: url("https://media.discordapp.net/attachments/1072181252964233328/1076193459842580571/9751538.png") no-repeat left;
+    background-image: url(./assets/input_image/phone.png) no-repeat left;
     background-size: 23px;
     padding-left: 40px;
     background-position: 12px;

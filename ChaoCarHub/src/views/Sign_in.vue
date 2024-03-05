@@ -13,7 +13,7 @@ const registerStore  = UseregisterStore()
         <div class="img_logo"></div>
         <div class="hero-body is-justify-content-center is-align-items-center">
             <div>
-                <div ALIGN="MIDDLE"><img src="https://media.discordapp.net/attachments/1072181252964233328/1076054960774598676/image-removebg-preview.png" height="220" width="260"></div>
+                <div ALIGN="MIDDLE"><img src="../assets/image_signin.png" height="220" width="260"></div>
                 <div class="columns is-flex is-flex-direction-column card1">
                     <h1 class="th1">SIGN IN</h1>
                     <div class="column px-5">
