@@ -189,7 +189,7 @@ CREATE TABLE `user` (
   `u_pass` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `u_phone` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `u_email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `role` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'user',
+  `role` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'admin',
   PRIMARY KEY (`u_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
