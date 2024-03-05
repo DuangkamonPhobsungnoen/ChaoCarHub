@@ -29,7 +29,7 @@ console.log(changeCheckout)
           <a class="has-text-black">
             <img
               class="icon"
-              src="https://media.discordapp.net/attachments/1072181252964233328/1076845329321824256/wallet.png"
+              src="../../assets/status_bar/1.png"
               alt=""
             />
             <p>Check out</p>
@@ -42,7 +42,7 @@ console.log(changeCheckout)
           <a class="has-text-black">
             <img
               class="icon"
-              src="https://cdn.discordapp.com/attachments/1072181252964233328/1076845328743022653/car.png"
+              src="../../assets/status_bar/2.png"
               alt=""
             />
             <p>Pick up car</p>
@@ -55,7 +55,7 @@ console.log(changeCheckout)
           <a class="has-text-black">
             <img
               class="icon"
-              src="https://cdn.discordapp.com/attachments/1072181252964233328/1076845328537489458/garage.png"
+              src="../../assets/status_bar/3.png"
               alt=""
             />
             <p>Return car</p>
@@ -68,7 +68,7 @@ console.log(changeCheckout)
           <a class="has-text-black">
             <img
               class="icon"
-              src="https://cdn.discordapp.com/attachments/1072181252964233328/1076845401061195826/file-document.png"
+              src="../../assets/status_bar/4.png"
               alt=""
             />
             <p>History</p>

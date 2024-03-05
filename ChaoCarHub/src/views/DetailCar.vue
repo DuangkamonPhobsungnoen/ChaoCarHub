@@ -38,19 +38,19 @@ const totalPrice = computed(() => {
         <div class="column ml-4 mt-4 is-2 is-size-5">
           <img
             class="icond tobottom"
-            src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607802408990/user.png"
+            src="../assets/detail_car/1.png"
             alt=""
           />
           {{ rentCarStore.carDetail?.car_seat }} ที่นั้ง<br />
           <img
             class="icond mt-3"
-            src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607567540294/bag.png"
+            src="../assets/detail_car/2.png"
             alt=""
           />
           {{ rentCarStore.carDetail?.car_bag }} กระเป๋า<br />
           <img
             class="icond mt-3"
-            src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607286509598/car-gear.png"
+            src="../assets/detail_car/3.png"
             alt=""
           />
           Auto

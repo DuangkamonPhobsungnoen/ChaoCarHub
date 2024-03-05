@@ -23,7 +23,7 @@ defineProps({
               <div class="column pt-6">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607802408990/user.png"
+                    src="../../assets/detail_car/1.png"
                     height="20"
                     width="20"
                   />
@@ -33,7 +33,7 @@ defineProps({
               <div class="column pt-5">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607567540294/bag.png"
+                    src="../../assets/detail_car/2.png"
                     height="20"
                     width="20"
                   />
@@ -43,7 +43,7 @@ defineProps({
               <div class="column pt-5">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607286509598/car-gear.png"
+                    src="../../assets/detail_car/3.png"
                     height="20"
                     width="20"
                   />
@@ -79,7 +79,7 @@ defineProps({
         <!-- trash -->
         <div v-if="!myrentStore.hadPay.includes(item.r_id)" class="column is-1">
             <a @click="myrentStore.showConfirmation(item.car_brand, item.car_model, item.r_id)">
-              <img src="https://media.discordapp.net/attachments/1072181252964233328/1079348472068702238/delete_1.png"/>
+              <img src="../../assets/image_delete.png"/>
             </a>
           <div v-if="myrentStore.showAlert">
             <div class="modal">
