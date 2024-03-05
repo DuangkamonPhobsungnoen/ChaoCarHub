@@ -13,7 +13,7 @@ const registerStore  = UseregisterStore()
       <div>
         <div ALIGN="MIDDLE">
           <img
-            src="https://media.discordapp.net/attachments/1072181252964233328/1076054960774598676/image-removebg-preview.png"
+            src="../assets/image_signin.png"
             height="320"
             width="420"
           />

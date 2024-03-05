@@ -73,7 +73,7 @@ body {
 }
 
 .input_username {
-    background: url('/assets/input_image/username.png') no-repeat left;
+    background: url('./assets/input_image/username.png') no-repeat left;
     background-size: 20px;
     padding-left: 40px;
     background-position: 12px;
