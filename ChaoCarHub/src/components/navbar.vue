@@ -23,7 +23,7 @@ const check = true;
         href=""
       >
         Cha<img
-          src="https://media.discordapp.net/attachments/1072181252964233328/1076461183864934431/9611156.png"
+          src="../assets/navbar/1.png"
         />
         CarHUB
       </a>
@@ -44,14 +44,14 @@ const check = true;
         <div class="navbar-item">
           <router-link to="/">
             <img
-              src="https://media.discordapp.net/attachments/1072181252964233328/1073627391571808316/1177455.png"
+              src="../assets/navbar/2.png"
             />
           </router-link>
         </div>
         <div class="navbar-item">
           <router-link to="/showcar">
             <img
-              src="https://media.discordapp.net/attachments/1072181252964233328/1073627928706949120/9610755.png"
+              src="../assets/navbar/3.png"
             />
           </router-link>
         </div>
@@ -59,7 +59,7 @@ const check = true;
           <a class="navbar-link">
             <router-link to="/myrent">
               <img
-                src="https://media.discordapp.net/attachments/1072181252964233328/1073622193784754257/1177568.png"
+                src="../assets/navbar/4.png"
               />
             </router-link>
           </a>
@@ -81,7 +81,7 @@ const check = true;
           <a class="navbar-link">
             <router-link to="/myrent">
               <img
-                src="https://cdn-icons-png.flaticon.com/512/1646/1646838.png"
+                src="../assets/navbar/5.png"
               />
             </router-link>
           </a>
@@ -95,7 +95,7 @@ const check = true;
           <a class="navbar-link">
             <router-link to="/admin">
               <img
-                src="https://cdn-icons-png.flaticon.com/512/1647/1647545.png"
+                src="../assets/navbar/6.png"
               />
             </router-link>
           </a>

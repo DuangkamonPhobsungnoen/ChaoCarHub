@@ -16,7 +16,7 @@ onMounted(rentCarStore.searchCar);
         <button class="button is-primary is-outlined" style="border:2px solid; border-radius:45px;">Search car</button>
         </router-link>
       </div>
-        <div class="column"><img src="https://media.discordapp.net/attachments/1072181252964233328/1106798386604159076/istockphoto-1161013241-170667a-removebg-preview-removebg-preview.png?width=598&height=448" /></div>
+        <div class="column"><img src="../../assets/image_showcar.png" /></div>
     </div>
   </div>
 </div>
