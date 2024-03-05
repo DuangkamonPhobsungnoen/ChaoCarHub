@@ -3,7 +3,7 @@
         <footer class="is-color-footer">
             <div class="column is-size-4 has-text-white">
                 <p class="column_number">
-                    <img src="https://media.discordapp.net/attachments/1072181252964233328/1080536072989192294/image_40.png"
+                    <img src="../assets/footer/1.png"
                         height="25" width="25">
                     <span class="pl-2">ChaoCarHUB</span>
                 </p>
@@ -15,7 +15,7 @@
                 <div class="column">
                     <p class="column_number">
                         <img
-                            src="https://media.discordapp.net/attachments/1072181252964233328/1080535831049146408/image_66.png" height="40" width="40">
+                            src="../assets/footer/2.png" height="40" width="40">
                         <span class="pl-2">สอบถามข้อมูลเพิ่มเติม
                             <br>สามารถติดต่อ 065-5674-8764</span>
                     </p>
@@ -23,7 +23,7 @@
                 <div class="column">
                     <p class=" column_number">
                         <img
-                            src="https://media.discordapp.net/attachments/1072181252964233328/1080535830835241081/image_63.png" height="40" width="40">
+                            src="../assets/footer/3.png" height="40" width="40">
                         <span class="pl-2">
                             สอบถามข้อมูลเพิ่มเติม
                             <br>ผ่านทางไลน์ OA @Chaocarhub</span>
@@ -32,7 +32,7 @@
                 <div class="column">
                     <p class=" column_number">
                         <img
-                            src="https://media.discordapp.net/attachments/1072181252964233328/1080535830608744598/image_64.png" height="40" width="40">
+                            src="../assets/footer/4.png" height="40" width="40">
                         <span class="pl-2">
                             สอบถามข้อมูลเพิ่มเติม
                             <br>ผ่านทางเฟชบุ๊ค Chaocarhub</span>
@@ -41,7 +41,7 @@
                 <div class="column">
                     <p class=" column_number">
                         <img
-                            src="https://media.discordapp.net/attachments/1072181252964233328/1080535830352896190/image_65.png" height="40" width="40">
+                            src="../assets/footer/5.png" height="40" width="40">
                         <span class="pl-2">
                             สอบถามข้อมูลเพิ่มเติมทางอีเมล <br>
                             Chaocarhub@gmail.com</span>
