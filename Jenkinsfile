@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('stop container') {
-      steps {
-        sh 'docker-compose down'
-      }
-    }
     stage('login docker') {
       steps {
         script {
@@ -23,8 +18,6 @@ pipeline {
     stage('Build image backend') {
       steps {
         dir('Backend/') {
-          sh 'pwd'
-          sh 'ls -l'
           sh 'docker build -t duangkamon/devtool-backend:latest .'
         }
       }
@@ -35,6 +28,19 @@ pipeline {
         sh 'docker push duangkamon/devtool-backend:latest'
       }
     }
+
+    stage('Clear Docker Components') {
+      steps {
+        script {
+          // Remove Docker images and containers
+          sh 'docker stop $(docker ps -a -q)'  
+          sh  'docker rm $(docker ps -a -q)' 
+          sh  'docker rmi $(docker images -q)'
+          sh 'docker system prune -af'
+        }
+      }
+    }
+    
     stage('run container') {
       steps {
         sh 'docker-compose up -d'
