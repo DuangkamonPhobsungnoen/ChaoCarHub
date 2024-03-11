@@ -46,7 +46,7 @@ onMounted(CarStore.FetchCar);
           <div class="card-image px-4">
             <figure class="image is-4by3">
               <!-- <img :src="item.car_img" alt="!!!!" /> -->
-              <img :src="`http://34.143.132.66:3000/${item.car_img}`" alt="" />
+              <img :src="`http://localhost:3000/${item.car_img}`" alt="" />
             </figure>
           </div>
         </td>
