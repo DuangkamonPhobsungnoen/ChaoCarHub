@@ -23,21 +23,21 @@ const isReturn = ref(false)
           <div class="column pl-6">
             <div class="column pt-6">
               <p class="subtitle is-size-7 column_number">
-                <img src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607802408990/user.png"
+                <img src="../../assets/detail_car/1.png"
                   height="20" width="20" />
                 <span class="pl-2">{{ item.car_seat }} ที่นั้ง</span>
               </p>
             </div>
             <div class="column pt-5">
               <p class="subtitle is-size-7 column_number">
-                <img src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607567540294/bag.png"
+                <img src="../../assets/detail_car/2.png"
                   height="20" width="20" />
                 <span class="pl-2">{{ item.car_bag }} กระเป๋า</span>
               </p>
             </div>
             <div class="column pt-5">
               <p class="subtitle is-size-7 column_number">
-                <img src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607286509598/car-gear.png"
+                <img src="../../assets/detail_car/3.png"
                   height="20" width="20" />
                 <span class="pl-2">อัตโนมัติ</span>
               </p>
@@ -92,7 +92,7 @@ const isReturn = ref(false)
         </p>
         <div class="column is-size-6 pl-6">
           <p class="subtitle is-size-6 column_number">
-            <img src="https://media.discordapp.net/attachments/1072181252964233328/1079444615184257074/success_1.png"
+            <img src="../../assets/detail_car/success.png"
               height="20" width="20" /><span class="pl-2"> ชำระเงินสำเร็จแล้ว</span>
           </p>
         </div>

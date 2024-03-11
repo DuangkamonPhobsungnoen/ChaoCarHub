@@ -22,7 +22,7 @@
               <div class="column pt-6">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607802408990/user.png"
+                    src="../../assets/detail_car/1.png"
                     height="20"
                     width="20"
                   />
@@ -32,7 +32,7 @@
               <div class="column pt-5">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607567540294/bag.png"
+                    src="../../assets/detail_car/2.png"
                     height="20"
                     width="20"
                   />
@@ -42,7 +42,7 @@
               <div class="column pt-5">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607286509598/car-gear.png"
+                    src="../../assets/detail_car/3.png"
                     height="20"
                     width="20"
                   />
@@ -78,7 +78,7 @@
           <div class="column is-size-6 pl-6">
             <a class="subtitle is-size-6 column_number" @click="myrentStore.showCancelPickupConfirmation(item.car_brand, item.car_model, item.r_id)">
               <a class="t-10">
-                <img src="https://media.discordapp.net/attachments/1072181252964233328/1079348472068702238/delete_1.png"
+                <img src="../../assets/image_delete.png"
                   height="25"
                   width="25"/>
               </a>

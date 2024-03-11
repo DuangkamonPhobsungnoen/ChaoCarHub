@@ -21,7 +21,7 @@ defineProps({
               <div class="column pt-6">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607802408990/user.png"
+                    src="../../assets/detail_car/1.png"
                     height="20"
                     width="20"
                   />
@@ -31,7 +31,7 @@ defineProps({
               <div class="column pt-5">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607567540294/bag.png"
+                    src="../../assets/detail_car/2.png"
                     height="20"
                     width="20"
                   />
@@ -41,7 +41,7 @@ defineProps({
               <div class="column pt-5">
                 <p class="subtitle is-size-7 column_number">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1072181252964233328/1078900607286509598/car-gear.png"
+                    src="../../assets/detail_car/3.png"
                     height="20"
                     width="20"
                   />
