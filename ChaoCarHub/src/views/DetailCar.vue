@@ -30,7 +30,7 @@ const totalPrice = computed(() => {
             {{ rentCarStore.carDetail?.car_model }}
           </h1>
           <img
-            :src="`http://localhost:3000/${rentCarStore.carDetail?.car_img}`"
+            :src="`http://35.198.237.137:3000/${rentCarStore.carDetail?.car_img}`"
             alt=""
           />
         </div>

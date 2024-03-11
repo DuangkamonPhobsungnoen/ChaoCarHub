@@ -14,7 +14,7 @@ defineProps({
             <div class="column is-8 is-size-3">
               {{ item.car_brand }} {{ item.car_model }}
               <div class="card-image image is-4by3">
-                <img :src="`http://localhost:3000/${item.car_img}`" />
+                <img :src="`http://35.198.237.137:3000/${item.car_img}`" />
               </div>
             </div>
             <div class="column pl-6">
