@@ -36,7 +36,7 @@ export const UseregisterStore = defineStore('register', () => {
     else if (!isNaN(fname.value)) {
       error.fname = "กรุณากรอกชื่อจรืงเป็นตัวอักษร";
       return;
-    } 
+    }
     error.fname = "";
   }
 
@@ -76,9 +76,9 @@ export const UseregisterStore = defineStore('register', () => {
 
   //validatePassw
   function validatePassw() {
-  const hasUpperCase = /[A-Z]/.test(passw.value);
-  const hasLowerCase = /[a-z]/.test(passw.value);
-  const hasNumber = /[0-9]/.test(passw.value);
+    const hasUpperCase = /[A-Z]/.test(passw.value);
+    const hasLowerCase = /[a-z]/.test(passw.value);
+    const hasNumber = /[0-9]/.test(passw.value);
 
     if (passw.value === "") {
       error.passw = "กรุณากรอกรหัสผ่าน";
@@ -94,7 +94,7 @@ export const UseregisterStore = defineStore('register', () => {
     }
     error.passw = "";
   }
-  
+
   //validatePassw2
   function validatePassw2() {
     if (passw2.value === "") {
@@ -115,7 +115,7 @@ export const UseregisterStore = defineStore('register', () => {
     if (email.value === "") {
       error.email = "กรุณากรอกอีเมล";
       return;
-    } 
+    }
     else if (vEmail === false) {
       error.email = "กรุณากรอกอีเมลให้ถูกต้อง";
       return;
@@ -262,7 +262,7 @@ export const UseregisterStore = defineStore('register', () => {
       localStorage.removeItem('isAdmin')
     } 3
     userProfile.value = null
-    window.location.href = '/sign_in'
+    window.location.href = '/'
   }
 
   const token = localStorage.getItem('token')
